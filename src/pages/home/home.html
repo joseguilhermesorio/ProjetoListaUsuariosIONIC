@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Cadastro</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2>Cadastro de Pessoas</h2>
+  <ion-list>
+    <ion-item>
+      <ion-label color="primary">Nome</ion-label>
+      <ion-input placeholder="Nome" name="nome" #nome></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary">Email</ion-label>
+      <ion-input placeholder="Email" name="email" #email></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary">Peso</ion-label>
+      <ion-input placeholder="Peso" name="peso" #peso></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary">Altura</ion-label>
+      <ion-input placeholder="Altura" name="altura" #altura></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary">Foto</ion-label>
+      <ion-input type="file" placeholder="Foto" name="foto" #foto></ion-input>
+      
+    </ion-item>
+    <button ion-button (click)="tirarFoto()" #fotoTirada>Tirar Foto</button>
+  </ion-list>
+  <button ion-button (click)="cadastrar(nome.value, email.value, peso.value, altura.value, foto.value, fotoTirada.value)">Cadastrar</button>
+
+  <h2>Lista de Pessoas</h2>
+  <div class="row header">
+    <div class="col">Foto</div>
+    <div class="col">Nome</div>
+    <div class="col">Email</div>
+    <div class="col">Peso</div>
+    <div class="col">Altura</div>
+    <div class="col">Calcular IMC</div>
+  </div>
+  <div class="row" *ngFor="let pessoa of pessoas">
+    <div class="col" *ngIf="pessoa.fotoTirada">
+      <div>{{pessoa.fotoTirada}}</div>
+    </div>
+    <div class="col">{{ pessoa.nome }}</div>
+    <div class="col">{{ pessoa.email }}</div>
+    <div class="col">{{ pessoa.peso }}</div>
+    <div class="col">{{ pessoa.altura }}</div>
+    <div class="col"><button ion-button (click)="calcularIMC(pessoa.nome, pessoa.peso, pessoa.altura)">CalcularIMC</button></div>
+  </div>
+
+  <h2>Resultado IMC</h2>
+  <div *ngFor="let i of imc">
+    <div>{{ i.nome }} : {{ i.resultado}}</div>
+  </div>
+</ion-content>

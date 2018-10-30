@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Pessoas
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <button ion-button (click)="listarPessoas()">Atualizar</button>
+    <div class="row header">
+      <div class="col">Foto</div>
+      <div class="col">Nome</div>
+      <div class="col">Email</div>
+      <div class="col">Peso</div>
+      <div class="col">Altura</div>
+    </div>
+    <div class="row" *ngFor="let p of listagem">
+      <div class="col">{{ p.foto }}</div>
+      <div class="col">{{ p.nome}}</div>
+      <div class="col">{{ p.email}}</div>
+      <div class="col">{{ p.peso}}</div>
+      <div class="col">{{ p.altura}}</div>
+    </div>
+</ion-content>
